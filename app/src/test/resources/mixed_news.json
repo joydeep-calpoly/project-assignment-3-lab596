@@ -1,0 +1,93 @@
+{
+    "status": "ok",
+    "totalResults": 1,
+    "articles": [
+      {
+        "source": {
+          "id": "Test1",
+          "name": "Test"
+        },
+        "author": "Test Guy",
+        "title": "Test-Article",
+        "description": "Test description of an article.",
+        "url": "https://www.test.com",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2005-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test2",
+          "name": "Test"
+        },
+        "author": "Test Guy2",
+        "title": "Test-Article2",
+        "description": "Test description of an article.",
+        "url": "https://www.test2.com",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2006-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test3",
+          "name": "Test"
+        },
+        "title": "Test-Article 2.5",
+        "description": "Test description of an article.",
+        "url": "https://www.test4.com",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2000-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test4",
+          "name": "Test"
+        },
+        "author": "Test Woman",
+        "title": "Test-Article 3.5",
+        "description": "Test description of an article.",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2007-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test5",
+          "name": "Test"
+        },
+        "author": "Test Woman2",
+        "title": "Test-Article4",
+        "description": "Test description of an article.",
+        "url": "https://www.test4.com",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2000-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test6",
+          "name": "Test"
+        },
+        "author": "Test Woman2",
+        "title": "Test-Article4",
+        "description": "Test description of an article.",
+        "url": "https://www.test4.com",
+        "urlToImage": "https://test.jpg",
+        "publishedAt": "2000-03-24T22:35:00Z",
+        "content": "Test content"
+      },
+      {
+        "source": {
+          "id": "Test7",
+          "name": "Test"
+        },
+        "author": "Test Woman",
+        "title": "Test-Article 4.5",
+        "description": "Test description of an article.",
+        "urlToImage": "https://test.jpg",
+        "content": "Test content"
+      }
+    ]
+}
