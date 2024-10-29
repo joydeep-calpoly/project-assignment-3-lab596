@@ -22,6 +22,9 @@ class NewsTest {
 
     private static Logger logger;
     
+    /**
+    * Setting up the logger for each of the tests
+    */
     @BeforeAll
     static void setUp() throws Exception {
         // Set up logger to capture invalid articles
@@ -32,12 +35,18 @@ class NewsTest {
         logger.setUseParentHandlers(false);
     }
 
+    
+    /**
+     * Parsing a single valid complex article from json and ensure that it is valid and returned properly
+     * @result A complex news parser can parse a single valid article
+     */
     @Test
     void testValidNewsParsingSingle() throws IOException {
 
         String content = new String(Files.readAllBytes(new File("src/test/resources/valid_news.json").toPath()));
+        ComplexNewsParser cnp = new ComplexNewsParser();
 
-        List<Article> goodArticles = Parser.parseNews(content, logger);
+        List<Article> goodArticles = cnp.parseNews(content, logger);
 
         assertNotNull(goodArticles);
         assertEquals(1, goodArticles.size());
@@ -46,6 +55,10 @@ class NewsTest {
         assertEquals(toString, goodArticles.get(0).toString());    
     }
 
+    /**
+     * Parsing a single valid complex article from string and ensure it is valid and returned properly
+     * @result A complex news parser can parse a single valid article from a string like format
+     */
     @Test
     void testValidNewsParsingfromString() {
         String json = "{\r\n" + //
@@ -68,7 +81,9 @@ class NewsTest {
                         "    ]\r\n" + //
                         "}";
         
-        List<Article> goodArticles = Parser.parseNews(json, logger);
+        ComplexNewsParser cnp = new ComplexNewsParser();
+
+        List<Article> goodArticles = cnp.parseNews(json, logger);
 
         assertEquals(1, goodArticles.size());
         assertTrue(goodArticles.get(0).isValid());
@@ -76,23 +91,35 @@ class NewsTest {
         assertEquals(toString, goodArticles.get(0).toString());    
     }
 
+    /**
+     * Parsing an empty string to ensure that we get an empty array of good articles
+     * @result Ensures that the empty string edge case returns an empty list of good articles
+     */
     @Test
     void EmptyString() {
         String json = "{\r\n" + //
                         "}";
         
-        List<Article> goodArticles = Parser.parseNews(json, logger);
+        ComplexNewsParser cnp = new ComplexNewsParser();
+
+        List<Article> goodArticles = cnp.parseNews(json, logger);
 
         assertEquals(0, goodArticles.size());
         assertTrue(goodArticles.isEmpty());
     }
 
+    /**
+     * Parsing multiple valid articles and ensure that all of them are good articles and validated properly
+     * @result Ensures that ComplexParser can deal with multiple articles at the same time that are valid
+     */
     @Test
     void testValidNewsParsingMultiple() throws IOException {
 
         String content = new String(Files.readAllBytes(new File("src/test/resources/valid_news2.json").toPath()));
 
-        List<Article> goodArticles = Parser.parseNews(content, logger);
+        ComplexNewsParser cnp = new ComplexNewsParser();
+
+        List<Article> goodArticles = cnp.parseNews(content, logger);
 
         assertNotNull(goodArticles);
         assertEquals(4, goodArticles.size());
@@ -102,22 +129,36 @@ class NewsTest {
             String.format("Article failed validation: %s", article.toString())));
     }
 
+     /**
+     * Parsing a single bad article and making sure that no articles are present in good articles
+     * @result Ensures that ComplexParser can deal with bad articles
+     */
     @Test
     void testInvalidNewsParsingSingle() throws IOException {
 
         String content = new String(Files.readAllBytes(new File("src/test/resources/invalid_news.json").toPath()));
 
-        List<Article> goodArticles = Parser.parseNews(content, logger);
+        ComplexNewsParser cnp = new ComplexNewsParser();
+
+        List<Article> goodArticles = cnp.parseNews(content, logger);
 
         assertEquals(0, goodArticles.size());
     }
 
+    
+    /**
+     * Testing a mix of good and bad articles and making sure that the correct number of good articles are present
+     * and that the articles placed within good articles are in fact valid
+     * @result Ensures that ComplexParser can deal with a mix of good and bad articles
+     */
     @Test
     void testMultipleSources() throws IOException {
 
         String content = new String(Files.readAllBytes(new File("src/test/resources/mixed_news.json").toPath()));
 
-        List<Article> goodArticles = Parser.parseNews(content, logger);
+        ComplexNewsParser cnp = new ComplexNewsParser();
+
+        List<Article> goodArticles = cnp.parseNews(content, logger);
 
         assertEquals(5, goodArticles.size());
         

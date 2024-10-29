@@ -63,7 +63,7 @@ public class News {
 
         /**
         * Following are public getters to fetch essential article content
-        * for the purpose of printing articles in the Parser class. Printing
+        * for the purpose of printing articles in the ComplexNewsParser class. Printing
         * is done in the parser class to ensure logging simultaniously
         *
         * @return String/Instant/URL  specified field that is requested
@@ -86,7 +86,7 @@ public class News {
 
         /**
         * An override of the toString method specifically to log an article
-        * that is missing esential content
+        * that is missing essential content
         *
         * @return String  A string containing the id and name of the article
         *                 in order to easily identify a article with missing content

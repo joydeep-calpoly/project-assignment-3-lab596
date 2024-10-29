@@ -5,22 +5,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import project.lab596.News.Article;
 
-public class Parser {
+public class ComplexNewsParser implements NewsParser{
 
     /**
-    * A method that sets up the logger for invalid articles and parses the news using
-    * JacksonBind and the News class format. It further prints the actual news by calling
-    * a helper method called provideNews
+    * This method goes uses ObjectMapper to parse the json provided with jacksondbind type of News.class
+    * It then calls the provideNews helper method to print the articles out
     *
-    * @param String String of the actual json file of news to parse
+    * @param Josn,Logger Json string that is the format of the News.class to get parsed
+    *                    And logger specified in Driver used to log the invalid articles
+    * @return List<Article> returns a list of the good articles
     */
-    static List<Article> parseNews(String json, Logger logger){
+    @Override
+    public List<Article> parseNews(String json, Logger logger){
         ObjectMapper mapper = new ObjectMapper();
         //Allows Instant to be parsed
         mapper.registerModule(new JavaTimeModule());
@@ -40,8 +41,9 @@ public class Parser {
     *
     * @param News,Logger News object that is what JacksonBind parses and places in News object
     *                    And logger specified in parseNews used to log the invalid articles
+    * @return List<Article> returns a list of the good articles
     */
-    private static List<Article> provideNews(News news, Logger logger){
+    private List<Article> provideNews(News news, Logger logger){
         List<Article> articles = news.getArticles();
         List<Article> goodArticles = new ArrayList<>();
 
@@ -61,4 +63,5 @@ public class Parser {
         }
         return goodArticles;
     }
+    
 }
