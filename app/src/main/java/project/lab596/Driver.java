@@ -66,9 +66,10 @@ public class Driver {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
         String API_URL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + prop.getProperty("NewsAPIKey");
-
         URL obj;
+
         try {
             obj = new URL(API_URL);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();

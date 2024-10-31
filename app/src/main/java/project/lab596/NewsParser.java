@@ -7,6 +7,6 @@ public interface NewsParser {
     
     //news parse function that takes the json it needs to parse and the logger and returns either the single simple news or
     //list of complex articles
-    List<?> parseNews(String json, Logger logger);
+    <T> List<T> parseNews(String json, Logger logger);
 
 }
