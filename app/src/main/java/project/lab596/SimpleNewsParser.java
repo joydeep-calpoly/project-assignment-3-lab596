@@ -12,7 +12,7 @@ public class SimpleNewsParser implements NewsParser {
     * This method goes uses ObjectMapper to parse the json provided with jacksondbind type of SimpleNews.class
     * It then calls the provideNews helper method to print the article out
     *
-    * @param Josn,Logger Json string that is the format of the SimpleNews.class to get parsed
+    * @param Json,Logger Json string that is the format of the SimpleNews.class to get parsed
     *                    And logger specified in Driver used to log the invalid articles
     * @return List<SimpleNews> returns a list of the good article
     */
@@ -52,6 +52,17 @@ public class SimpleNewsParser implements NewsParser {
             logger.warning(news.toString());
         }
         return Collections.emptyList();
+    }
+
+    /**
+    * This is a visit method that simply calls the parseNews method
+    *
+    * @param Json,Logger Json string that is the format of the SimpleNews.class to get parsed
+    *                    And logger specified in Driver used to log the invalid articles
+    */
+    @Override
+    public void visit(String json, Logger logger) {
+        parseNews(json, logger);
     }
     
 }

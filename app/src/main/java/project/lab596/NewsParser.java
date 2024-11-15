@@ -9,4 +9,5 @@ public interface NewsParser {
     //list of complex articles
     <T> List<T> parseNews(String json, Logger logger);
 
+    void visit(String json, Logger logger);
 }

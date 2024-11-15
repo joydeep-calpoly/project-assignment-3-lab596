@@ -10,13 +10,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import project.lab596.News.Article;
 
-public class ComplexNewsParser implements NewsParser{
+public class ComplexNewsParser implements NewsParser {
 
     /**
     * This method goes uses ObjectMapper to parse the json provided with jacksondbind type of News.class
     * It then calls the provideNews helper method to print the articles out
     *
-    * @param Josn,Logger Json string that is the format of the News.class to get parsed
+    * @param Json,Logger Json string that is the format of the News.class to get parsed
     *                    And logger specified in Driver used to log the invalid articles
     * @return List<Article> returns a list of the good articles
     */
@@ -62,6 +62,17 @@ public class ComplexNewsParser implements NewsParser{
             }
         }
         return goodArticles;
+    }
+
+    /**
+    * This is a visit method that simply calls the parseNews method
+    *
+    * @param Json,Logger Json string that is the format of the News.class to get parsed
+    *                    And logger specified in Driver used to log the invalid articles
+    */
+    @Override
+    public void visit(String json, Logger logger) {
+        parseNews(json, logger);
     }
     
 }

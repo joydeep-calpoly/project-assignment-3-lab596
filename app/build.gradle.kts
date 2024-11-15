@@ -28,7 +28,8 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
-
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation("org.mockito:mockito-core:5.14.2")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
